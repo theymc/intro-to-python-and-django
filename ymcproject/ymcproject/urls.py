@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 from experiments import views
+from experiments import models
+from experiments import serializers
+from rest_framework import generics
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -8,6 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'experiments.views.home', name='home'),  # A function based view
     url(r'^classbased/?$', views.TimeView.as_view()),  # A class based view
+    url(r'^persons/?$', generics.ListAPIView.as_view(model=models.Person, serializer_class=serializers.PersonSerializer)),
     # url(r'^ymcproject/', include('ymcproject.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
