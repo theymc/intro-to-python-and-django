@@ -6,8 +6,8 @@ from experiments import views
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'experiments.views.home', name='home'),
-    url(r'^classbased/?$', views.TimeView.as_view()),
+    url(r'^$', 'experiments.views.home', name='home'),  # A function based view
+    url(r'^classbased/?$', views.TimeView.as_view()),  # A class based view
     # url(r'^ymcproject/', include('ymcproject.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
