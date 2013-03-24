@@ -1,9 +1,6 @@
 import requests
-from django.core.management import setup_environ
-from ymcproject import settings
-setup_environ(settings)
 import simplejson as json
-from experiments import models
+import models
 
 
 def _get_dict_for_one_page_of_products(page):
@@ -32,7 +29,3 @@ def store_all_lcbo_products():
             print "Page %s blew up with malformed json. Call the cops." % page
         if lcbo_data['pager']['is_final_page']:
             has_next_page = False
-
-print "Begin stealing booze..."
-store_all_lcbo_products()
-print "%d liquor products have been stolen" % models.LcboProduct.objects.count()

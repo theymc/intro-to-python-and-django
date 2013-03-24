@@ -1,7 +1,4 @@
-from django.core.management import setup_environ
-from ymcproject import settings
-setup_environ(settings)
-from experiments import models
+import models
 from django.db.models import Min
 
 
@@ -34,8 +31,3 @@ def print_booze_a_lytics():
     number_of_bottles = 2500 / best_value_alcohol.price_in_cents
     print "For $25, you should be able to get %d (%s mL bottles) of %s" % (number_of_bottles, best_value_alcohol.volume_in_milliliters, best_value_alcohol.name)
     print "==============="
-
-print_booze_a_lytics()
-maximum_price = int(input("Maximum amount of money to spend (Dollars):"))
-alcohol_content = int(input("Minimum alcohol percentage (Percent):"))
-filter_max_price_min_alcohol(maximum_price, alcohol_content)
