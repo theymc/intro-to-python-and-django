@@ -3,7 +3,7 @@ from liquor import liquor_analysis
 
 
 class Command(BaseCommand):
-    help = 'Creates random data'
+    help = 'Analyze data from the LCBO Api'
 
     def handle(self, *args, **options):
         liquor_analysis.print_booze_a_lytics()
