@@ -1,10 +1,11 @@
 import requests
 import simplejson as json
 import models
+import settings
 
 
 def _get_dict_for_one_page_of_products(page):
-    response = requests.get("http://lcboapi.com/products?per_page=100&page=%d" % page)
+    response = requests.get(settings.LCBO_PRODUCTS_API_URL + "?per_page=100&page=%d" % page)
     return response.json()
 
 
