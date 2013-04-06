@@ -6,8 +6,10 @@ from experiments import views
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^movies/', include('movie_master.urls')),
-    url(r'^experiments/', include('experiments.urls')),
+    url(r'^/?$', 'experiments.views.home', name='home'),  # A function based view
+    url(r'^classbased/?$', views.TimeView.as_view()),  # A class based view
+    # url(r'^ymcproject/', include('ymcproject.foo.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

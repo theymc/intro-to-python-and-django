@@ -1,0 +1,18 @@
+<html>
+<body>
+<h1>Movie Finder</h1>
+
+  {% if form.movie_name.errors %}
+  Errors:
+  {% for error in form.movie_name.errors %}
+      <li><strong>{{ error|escape }}</strong></li>
+  {% endfor %}
+  {% endif %}
+
+<form action="" method="post">{% csrf_token %}
+<input type="text" name="movie_name" placeholder="Enter a movie name here">
+<input type="submit" value="Submit" />
+</form>
+{{ search_results }}
+</body>
+</html>
