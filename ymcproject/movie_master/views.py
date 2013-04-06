@@ -10,9 +10,10 @@ class MovieSearchView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         form = forms.MovieSearchForm(data=request.POST)
-        if form.is_valid():
-            context = {'search_results': request.POST.get('movie_name', None)}
-        else:
+        if form.is_valid():  #
+            search_word = form.cleaned_data.get('movie_name', None)
+            context = {'search_results': search_word}
+        else:  # Return the form with errors in the context
             context = {'form': form}
         return render(request, self.template_name, context)
 
