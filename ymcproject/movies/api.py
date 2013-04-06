@@ -7,7 +7,7 @@ import requests
 from pprint import pprint
 API_KEY = "gq6hs44mcn83ghkqehjjftvy"
 
-def get_movie_ids(search_term):
+def get_movies(search_term):
     """
     The GET parameters will be url encoded to make the call. This process
     is explained for the requests library on its official page.
@@ -23,11 +23,8 @@ def get_movie_ids(search_term):
     }
 
     response = requests.get(search_url,params=params)
-    result = {}
-    for movie in response.json['movies']:
-        result[movie['id']] = movie['title']
+    return response.json['movies']
 
-    return result
 
 
 def get_movie(movie_id):
@@ -77,7 +74,7 @@ def search_and_save(search_term):
     
     search_results = get_movie_ids(search_term)
     
-    for movie_id in search_results:
-        movie = get_movie(movie_id)
+    for movie in search_results:
+        movie = get_movie(movie['id'])
         save_movie(movie)
 
