@@ -120,7 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'experiments',
     'liquor',
-    'movie',
+    'movies',
     'movie_master',
     'debug_toolbar',
     # Uncomment the next line to enable the admin:
