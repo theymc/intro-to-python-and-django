@@ -16,6 +16,33 @@
 <input type="text" name="movie_name" placeholder="Enter a movie name here">
 <input type="submit" value="Submit" class='button success'/>
 </form>
-{{ search_results }}
+
+{% if search_results %}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Poster</th>
+      <th width="250">Movie Title</th>
+      <th>Year Release</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for movie in search_results %}
+    <td>{{ forloop.counter }}</td>
+      <td><img src="{{movie.posters.thumbnail}}" alt="{{movie.title}}" class="img-rounded"/></td>
+      <td>{{movie.title}}</td>
+      <td>{{movie.year}}</td>
+      <td><i class="icon-film"></i></td>
+    </tr>
+   {% endfor %}
+  
+  </tbody>
+</table>
+
+{% endif %}
 
 {% endblock %}
