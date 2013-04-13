@@ -123,6 +123,8 @@ INSTALLED_APPS = (
     'movies',
     'movie_master',
     'debug_toolbar',
+    'rest_framework',
+    'lcbo2api',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
