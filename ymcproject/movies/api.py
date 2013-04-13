@@ -23,7 +23,7 @@ def get_movies(search_term):
     }
 
     response = requests.get(search_url,params=params)
-    return response.json.get('movies',[])
+    return response.json().get('movies', [])
 
 
 def get_movie(movie_id):
