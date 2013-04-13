@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Movie{% endblock %}
+
+{% block content %}
+
+<form action="" method="post" class="form-search">
+  {% csrf_token %}
+  <div class="input-prepend input-append">
+    <span class="add-on">$</span>
+    <input class="span2" id="appendedPrependedInput" type="text" placeholder="price for liquor" name="cost" value={{ cost }}>
+  </div>
+
+  <select name="genre" id="genre">
+    {% for genre in genre_list %}
+      {% if genre_selected == genre.name %}
+        <option selected="selected"> {{ genre.name }} </option>
+      {% else %}
+        <option>{{ genre.name }}</option>
+      {% endif %}
+
+    {% endfor %}
+</select>
+ <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% if data %}
+<caption>Found <strong>awesome</strong> movie for <strong>{{genre_selected}}</strong> and in the budget of <strong>${{ cost }}</strong> : </caption>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th width="250">Movie Title</th>
+      <th>Drink</th>
+      <th>Drink Type</th>
+      <th>Drink Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{data.movie.title}}</td>
+      <td>{{data.alcohol.name}}</td>
+      <td>{{data.alcohol.primary_category}}</td>
+      <th>${{data.price}}</th>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}
